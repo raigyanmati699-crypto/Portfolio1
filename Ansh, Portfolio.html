@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ansh, Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3f3f0;--ink:#1d1f22;--mute:#686b70;--rule:#cdcdc8;--accent:#2f3dff;--plate:#d8dad2;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#15171a;--ink:#e8e8e4;--mute:#9a9da2;--rule:#34373c;--accent:#8c98ff;--plate:#262a2f}
+}
+:root[data-theme="dark"]{--paper:#15171a;--ink:#e8e8e4;--mute:#9a9da2;--rule:#34373c;--accent:#8c98ff;--plate:#262a2f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.65 var(--sans);-webkit-text-size-adjust:100%}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+
+/* Masthead */
+.masthead{padding-top:clamp(1.5rem,5vw,3rem)}
+.masthead h1{margin:0 0 0 -.04em;font:400 clamp(7rem,38vw,26rem)/.78 var(--serif);letter-spacing:-.045em}
+@media (prefers-reduced-motion:no-preference){
+  .masthead h1{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(.12em)}to{opacity:1;transform:none}}
+}
+.strip{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:clamp(1.2rem,3vw,2rem);padding:.7rem 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);font-size:.875rem;color:var(--mute)}
+.cover{padding:clamp(2.5rem,7vw,5rem) 0 clamp(3rem,8vw,6rem)}
+.cover p.line{margin:0;max-width:16em;font:400 clamp(2rem,6.4vw,4.6rem)/1.05 var(--serif);letter-spacing:-.015em}
+.cover p.line em{color:var(--accent)}
+.cover p.sub{margin:1.6rem 0 0;max-width:34em;color:var(--mute)}
+
+/* Contents */
+.contents{border-top:1px solid var(--rule);padding:clamp(2rem,5vw,3.5rem) 0}
+.contents h2,.about h2,.contact h2{margin:0 0 1.25rem;font:italic 400 1.6rem/1.1 var(--serif)}
+.contents ol{list-style:none;margin:0;padding:0}
+.contents li a{display:flex;align-items:baseline;gap:.75rem;padding:.6rem 0;text-decoration:none;font:400 clamp(1.4rem,4vw,2.3rem)/1.15 var(--serif)}
+.contents li a b{order:1;font-weight:400}
+.contents li a::after{content:"";order:2;flex:1;min-width:1.5rem;border-bottom:1px dotted var(--mute)}
+.contents li a span{order:3;font:500 .95rem var(--sans);color:var(--mute)}
+.contents li a:hover b{color:var(--accent)}
+
+/* Features */
+.feature{border-top:2px solid var(--ink);padding:clamp(2rem,5vw,3.5rem) 0 clamp(3rem,7vw,5rem);display:grid;gap:1.75rem}
+.feature header h3{margin:0;font:400 clamp(2.6rem,9vw,6rem)/.95 var(--serif);letter-spacing:-.025em}
+.feature .deck{margin:1rem 0 0;max-width:30em;font:italic 400 clamp(1.25rem,3vw,1.7rem)/1.25 var(--serif);color:var(--mute)}
+figure{margin:0}
+.plate{position:relative;aspect-ratio:16/9;background:var(--plate);overflow:hidden}
+.plate::before,.plate::after{content:"";position:absolute}
+.p1::before{width:34%;aspect-ratio:1;border-radius:50%;background:var(--accent);left:12%;top:22%}
+.p1::after{width:30%;height:2px;background:var(--ink);left:50%;top:60%}
+.p2{background:var(--ink)}
+.p2::before{width:46%;height:38%;border:2px solid var(--paper);left:27%;top:31%}
+.p2::after{width:12%;aspect-ratio:1;background:var(--accent);left:61%;top:50%}
+.p3::before{width:100%;height:34%;background:var(--accent);left:0;bottom:0}
+.p3::after{width:18%;aspect-ratio:1;border-radius:50%;background:var(--ink);right:14%;top:18%}
+figcaption{margin-top:.55rem;font:italic 400 .95rem var(--serif);color:var(--mute)}
+.facts{margin:0;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:.4rem 2.5rem;font-size:.9rem}
+.facts div{display:contents}
+.facts dt{color:var(--mute)}
+.facts dd{margin:0;font-weight:500}
+.body p{margin:0 0 1em}
+.body p:first-child::first-letter{float:left;font:400 4.1rem/.8 var(--serif);padding:.3rem .5rem 0 0}
+@media (min-width:860px){
+  .feature{grid-template-columns:1fr 1fr;column-gap:3rem}
+  .feature header,.feature figure{grid-column:1/-1}
+}
+
+/* Pull quote */
+.pull{border-top:1px solid var(--rule);padding:clamp(3rem,8vw,6rem) 0}
+.pull blockquote{margin:0;max-width:20em;font:400 clamp(2rem,6vw,4rem)/1.08 var(--serif);letter-spacing:-.015em}
+.pull cite{display:block;margin-top:1.25rem;font:normal 400 .95rem var(--sans);color:var(--mute)}
+
+/* About + contact */
+.about,.contact{border-top:2px solid var(--ink);padding:clamp(2rem,5vw,3.5rem) 0}
+.about .cols{display:grid;gap:1.5rem;max-width:44em}
+.about p{margin:0}
+@media (min-width:860px){.about .cols{max-width:none;grid-template-columns:1fr 1fr;column-gap:3rem}}
+.contact a.mail{display:inline-block;font:400 clamp(2rem,7vw,4.5rem)/1.05 var(--serif);text-decoration-thickness:1px;text-underline-offset:.12em;overflow-wrap:anywhere}
+.contact a.mail:hover{color:var(--accent)}
+.contact ul{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;gap:1.75rem;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--rule);padding:1.5rem 0 2.5rem;font-size:.9rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <h1>Ansh</h1>
+  <div class="strip"><span>Portfolio of Ansh</span><span>Autumn 2026</span><span>Issue 01</span></div>
+</header>
+
+<section class="cover">
+  <p class="line">Designer and developer making interfaces that <em>stay out of the way.</em></p>
+  <p class="sub">Inside this issue: three projects, how they were made, and what came out of them. Open to freelance work and full-time roles.</p>
+</section>
+
+<nav class="contents" aria-label="Contents">
+  <h2>In this issue</h2>
+  <ol>
+    <li><a href="#harbor"><b>Harbor</b><span>04</span></a></li>
+    <li><a href="#fieldnotes"><b>Field Notes</b><span>08</span></a></li>
+    <li><a href="#saltindex"><b>Salt &amp; Index</b><span>12</span></a></li>
+    <li><a href="#about"><b>From the editor</b><span>16</span></a></li>
+  </ol>
+</nav>
+
+<article class="feature" id="harbor">
+  <header>
+    <h3>Harbor</h3>
+    <p class="deck">A ferry app that tells the truth about delays.</p>
+  </header>
+  <figure><div class="plate p1" role="img" aria-label="Abstract cover art: a blue circle above a thin line"></div><figcaption>Cover art for Harbor, placeholder.</figcaption></figure>
+  <div class="body">
+    <p>Commuters were checking three apps to learn whether the 7:40 crossing was running. Harbor shows one answer first, then the reasons behind it.</p>
+    <p>The redesign cut the booking flow from six screens to two. Replace this paragraph with your result, a number, or a quote from a user.</p>
+  </div>
+  <dl class="facts"><div><dt>Role</dt><dd>Design and front end</dd></div><div><dt>Year</dt><dd>2026</dd></div><div><dt>Tools</dt><dd>Figma, React</dd></div></dl>
+</article>
+
+<article class="feature" id="fieldnotes">
+  <header>
+    <h3>Field Notes</h3>
+    <p class="deck">A quiet reading tool for people who highlight too much.</p>
+  </header>
+  <figure><div class="plate p2" role="img" aria-label="Abstract cover art: an outlined frame with a small blue square"></div><figcaption>Cover art for Field Notes, placeholder.</figcaption></figure>
+  <div class="body">
+    <p>Field Notes turns a year of highlights into a short weekly letter, so the best ideas come back before they are forgotten.</p>
+    <p>Built solo over four months and used by a few hundred readers. Replace this with your own story and numbers.</p>
+  </div>
+  <dl class="facts"><div><dt>Role</dt><dd>Product and code</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Tools</dt><dd>TypeScript, SQLite</dd></div></dl>
+</article>
+
+<article class="feature" id="saltindex">
+  <header>
+    <h3>Salt &amp; Index</h3>
+    <p class="deck">A restaurant website that fills the dining room.</p>
+  </header>
+  <figure><div class="plate p3" role="img" aria-label="Abstract cover art: a blue band under a dark circle"></div><figcaption>Cover art for Salt &amp; Index, placeholder.</figcaption></figure>
+  <div class="body">
+    <p>The menu changes weekly, so the site does too. Chefs update it from a phone in under a minute, and reservations open the same hour.</p>
+    <p>Weekend bookings sold out within a month of launch. Swap in your real outcome here.</p>
+  </div>
+  <dl class="facts"><div><dt>Role</dt><dd>Brand and web</dd></div><div><dt>Year</dt><dd>2024</dd></div><div><dt>Tools</dt><dd>Illustrator, HTML</dd></div></dl>
+</article>
+
+<section class="pull">
+  <blockquote>“Good design is mostly deciding what to leave out.”</blockquote>
+  <cite>Ansh, on every project</cite>
+</section>
+
+<section class="about" id="about">
+  <h2>From the editor</h2>
+  <div class="cols">
+    <p>I am Ansh, a designer who writes code. I like projects where the interface is small and the problem is large, and where a clear layout does most of the work.</p>
+    <p>Right now I am looking for a team that cares about craft and ships often. If that sounds like yours, I would like to hear about it.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Write to me</h2>
+  <a class="mail" href="mailto:hello@example.com">hello@example.com</a>
+  <ul>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">GitHub</a></li>
+  </ul>
+</section>
+
+<footer>©️2026 copyright received Ansh</footer>
+
+</div>
+</body>
+</html>
